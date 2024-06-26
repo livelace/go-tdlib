@@ -124,10 +124,10 @@ func (client *Client) Send(req Request) (*Response, error) {
 	}
 }
 
-func (client *Client) GetListener() *Listener {
+func (client *Client) GetListener(size int) *Listener {
 	listener := &Listener{
 		isActive: true,
-		Updates:  make(chan Type, 1000),
+		Updates:  make(chan Type, size),
 	}
 	client.listenerStore.Add(listener)
 
